@@ -1,0 +1,24 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary", "rust_doc")
+load("@crate_index//:defs.bzl", "aliases", "all_crate_deps")
+
+package(default_visibility = ["//visibility:public"])
+
+
+rust_binary(
+    name = "hello_world",
+    edition = "2021",
+    srcs = ["src/main.rs"],
+    aliases = aliases(
+        normal_dev = True,
+        proc_macro_dev = True,
+    ),
+    deps = all_crate_deps(),
+    proc_macro_deps = all_crate_deps(
+        proc_macro = True,
+    ),
+)
+
+rust_doc(
+    name = "hello_world_doc",
+    crate = ":hello_world",
+)
