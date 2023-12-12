@@ -7,7 +7,11 @@ package(default_visibility = ["//visibility:public"])
 rust_binary(
     name = "hello_world",
     edition = "2021",
-    srcs = ["src/main.rs"],
+    srcs = [
+        "src/main.rs",
+        "src/rest.rs",
+        "src/hgpio.rs",
+    ],
     aliases = aliases(
         normal_dev = True,
         proc_macro_dev = True,
